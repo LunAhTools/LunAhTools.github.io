@@ -29,5 +29,5 @@ body {
 
 @font-face {
   font-family: fontSetting;
-  src: url(../font/Iansui093.ttf) format("woff");
+  src: url(../font/Iansui093.ttf) format("truetype");
 }
