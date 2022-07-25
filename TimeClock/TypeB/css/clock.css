@@ -1,0 +1,45 @@
+:root {
+  /* 總寬度參數*/
+  --allheight: 5em;
+  /* 總高度參數 */
+  --allwidth: 15em;
+  /* 預設文字大小參數 */
+  --fsize: 2em;
+}
+
+html {
+  /* 預設背景顏色 */
+  background-color: transparent !important;
+  /* 網頁寬度 */
+  width: var(--allwidth);
+}
+
+body {
+  /* 文字大小 */
+  font-size: var(--fsize);
+}
+
+#app {
+  /* 主要樣式設定 透明背景暫時不需要 */
+  color: slateblue;
+  background-color: wheat;
+  /* border: 5px rgba(255, 0, 0, 0.6) solid; */
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px 5px wheat;
+  padding: 0px;
+  height: var(--allheight);
+}
+
+#clock {
+  /* 字型設定 */
+  font-family: fontSetting;
+  /* 文字置中 */
+  text-align: center;
+}
+
+@font-face {
+  /* 自訂字型參數 */
+  font-family: fontSetting;
+  /* 自訂字型檔案位置 */
+  src: url(../font/jf-openhuninn-1.1.ttf) format("woff");
+}

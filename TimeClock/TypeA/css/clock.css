@@ -1,0 +1,33 @@
+:root {
+  --allheight: 2.6em;
+  --allwidth: 15em;
+  --fsize: 2em;
+}
+
+html {
+  background-color: transparent !important;
+  width: var(--allwidth);
+}
+
+body {
+  font-size: var(--fsize);
+}
+
+#app {
+  padding: 0px;
+  height: var(--allheight);
+}
+
+#clock {
+  font-family: fontSetting;
+  text-align: center;
+}
+
+#sec {
+  font-size: 0.75em;
+}
+
+@font-face {
+  font-family: fontSetting;
+  src: url(../font/Iansui094.ttf) format("woff");
+}

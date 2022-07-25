@@ -1,0 +1,38 @@
+:root {
+  --allheight: 2em;
+  --allwidth: 10em;
+  --fsize: 2em;
+}
+
+html {
+  background-color: transparent !important;
+}
+
+body {
+  font-size: var(--fsize);
+}
+
+.img {
+  position: relative;
+}
+
+#app {
+  color: slateblue;
+  padding: 0.7em;
+  width: var(--allwidth);
+  height: var(--allheight);
+}
+
+#clock {
+  position: absolute;
+  font-family: fontSetting;
+  text-align: center;
+  top: 0.87em;
+  left: 3.5em;
+
+}
+
+@font-face {
+  font-family: fontSetting;
+  src: url(../font/Cubic_11_1.000_R.ttf) format("woff");
+}
