@@ -1,23 +1,26 @@
 :root {
-  --allheight: 2.6em;
-  --allwidth: 15em;
-  --fsize: 2em;
+  --allheight: 2.38em;
+  --allwidth: 4.75em;
+  --fsize: 5em;
 }
 
 html {
   background-color: transparent !important;
-  width: var(--allwidth);
 }
 
 body {
   font-size: var(--fsize);
+  margin: 0px;
 }
 
 #app {
+  /* position: relative; */
+  width: var(--allwidth);
   padding: 0px;
 }
 
 #clock {
+  /* position: absolute; */
   font-family: fontSetting;
   text-align: center;
 }
