@@ -1,45 +1,41 @@
 :root {
-  /* 總寬度參數*/
-  --allheight: 5em;
-  /* 總高度參數 */
-  --allwidth: 15em;
-  /* 預設文字大小參數 */
+  --allheight: 7.8em;
+  --allwidth: 9.5em;
   --fsize: 2em;
 }
 
 html {
-  /* 預設背景顏色 */
   background-color: transparent !important;
-  /* 網頁寬度 */
-  width: var(--allwidth);
 }
 
 body {
-  /* 文字大小 */
+  margin: 0px;
   font-size: var(--fsize);
-}
-
-#app {
-  /* 主要樣式設定 透明背景暫時不需要 */
-  color: slateblue;
-  background-color: wheat;
-  /* border: 5px rgba(255, 0, 0, 0.6) solid; */
-  border-radius: 20px;
-  box-shadow: 0px 0px 15px 5px wheat;
-  padding: 0px;
+  width: var(--allwidth);
   height: var(--allheight);
 }
 
+#app {
+  position: absolute;
+  color: darkred;
+  background-color: wheat;
+  border-radius: 1em;
+  box-shadow: 0px 0px 1em 0.2em wheat;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  top: 1.5em;
+  left: 1.5em;
+}
+
 #clock {
-  /* 字型設定 */
   font-family: fontSetting;
-  /* 文字置中 */
   text-align: center;
+  margin: auto;
 }
 
 @font-face {
-  /* 自訂字型參數 */
   font-family: fontSetting;
-  /* 自訂字型檔案位置 */
   src: url(../font/jf-openhuninn-1.1.ttf) format("truetype");
 }

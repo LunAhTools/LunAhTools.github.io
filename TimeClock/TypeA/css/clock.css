@@ -15,7 +15,6 @@ body {
 
 #app {
   padding: 0px;
-  height: var(--allheight);
 }
 
 #clock {
