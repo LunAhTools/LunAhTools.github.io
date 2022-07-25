@@ -52,6 +52,13 @@ body {
 
 .img {
   position: relative;
+  left: 10px;
+  top: 5px;
+}
+
+img {
+  width: 72px;
+  height: 72px;
 }
 
 #clock {
@@ -64,5 +71,5 @@ body {
 
 @font-face {
   font-family: fontSetting;
-  src: url(../font/Cubic_11_1.000_R.ttf) format("truetype");
+  src: url(../font/timemachine-wa.ttf) format("truetype");
 }
