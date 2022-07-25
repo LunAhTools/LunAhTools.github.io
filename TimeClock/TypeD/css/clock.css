@@ -1,0 +1,85 @@
+:root {
+  --allheight: 0em;
+  --allwidth: 8.5em;
+  --cerSize: 6em;
+  --fsize: 4em;
+}
+
+html {
+  background-color: transparent !important;
+}
+
+body {
+  font-size: var(--fsize);
+  font-weight: bold;
+  margin: 0px;
+  width: var(--allwidth);
+  height: 10em;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  color: slateblue;
+  /* padding: 0.7em; */
+  top: 2.4em;
+  left: 0em;
+}
+
+/* #cir {
+  position: absolute;
+  width: var(--cerSize);
+  height: var(--cerSize);
+  border: 0.2em;
+  border-style: solid;
+  border-color: darkred;
+  border-radius: 100%;
+  top: -1.2em;
+  left: 1.3em;
+} */
+
+#cirrever {
+  position: absolute;
+  width: var(--cerSize);
+  height: var(--cerSize);
+  border: 0.2em;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 100%;
+  top: -0.6em;
+  left: 1.1em;
+}
+
+#ttrever {
+  position: absolute;
+  width: 1.1em;
+  height: 1.1em;
+  /* background: darkred; */
+  /* -webkit-clip-path: polygon(50% 0%, 90.18% 19.72%, 100% 64.22%, 72.32% 100%, 27.68% 100%, 0% 64.22%, 10.09% 19.72%); */
+  /* clip-path: polygon(50% 0%, 90.18% 19.72%, 100% 64.22%, 72.32% 100%, 27.68% 100%, 0% 64.22%, 10.09% 19.72%); */
+  left: 3em;
+  top: -1.1em;
+}
+
+.img {
+  text-align: center;
+  left: 10px;
+  top: 5px;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+}
+
+#clock {
+  font-family: fontSetting;
+  text-align: center;
+  top: 0.87em;
+  left: 3.5em;
+}
+
+@font-face {
+  font-family: fontSetting;
+  src: url(../font/timemachine-wa.ttf) format("truetype");
+}

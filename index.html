@@ -11,26 +11,24 @@
 </head>
 
 <body>
-  <!-- <div id="loading" class="container-fluid w-100 h-100 fixed-top bg-secondary">
-    <div class="row">
-      <div class="col"></div>
-    </div>
-  </div> -->
   <div id="load" class="text-center fixed-top bg-white h-100">
     <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status">
     </div>
   </div>
+
   <div class="container text-secondary">
     <div class="row mt-3 mb-4">
       <h1 class="fs-1">直播 時鐘樣式</h1>
       <span>點選 Type文字 可開啟樣式</span>
       <span>內容、樣式、字型皆可客制</span>
     </div>
-    <div class="row  mb-2">
+
+    <div class="row mb-2">
       <div class="col-12 col-lg-6 mb-2">
         <div class="card h-100">
-          <div class="h-50 mt-5 mb-5 m-auto p-2 justify-content-center align-items-center align-content-center">
-            <iframe class="overflow-hidden" title="TypeA" src="./TimeClock/TypeA/TypeA.html" width="380" height="188"></iframe>
+          <div class=" mt-5 mb-5 m-auto p-2 text-center">
+            <iframe class="overflow-hidden" title="TypeA" src="./TimeClock/TypeA/TypeA.html" width="380"
+              height="188"></iframe>
           </div>
           <div class="card-body">
             <h5 class="card-title">TypeA-普通透明背景 380*188</h5>
@@ -49,7 +47,7 @@
       </div>
       <div class="col-12 col-lg-6 mb-2">
         <div class="card h-100">
-          <div class=" m-auto p-2 text-center">
+          <div class="mt-4  m-auto p-2 text-center">
             <iframe title="TypeB" src="./TimeClock/TypeB/TypeB.html" width="310" height="260"></iframe>
           </div>
           <div class="card-body">
@@ -69,10 +67,11 @@
         </div>
       </div>
     </div>
+
     <div class="row mb-2">
       <div class="col-12 col-lg-6">
         <div class="card h-100">
-          <div class=" m-auto p-2 text-center">
+          <div class="mt-5 mb-5 m-auto p-2 text-center">
             <iframe class="overflow-hidden" title="TypeC" src="./TimeClock/TypeC/TypeC.html" width="500"
               height="500"></iframe>
           </div>
@@ -92,6 +91,28 @@
           </div>
         </div>
       </div>
+      <div class="col-12 col-lg-6">
+        <div class="card h-100">
+          <div class="m-auto p-2 text-center">
+            <iframe class="overflow-hidden" title="TypeD" src="./TimeClock/TypeD/TypeD.html" width="550"
+              height="596"></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">TypeD-動態文字、圖片 600*600</h5>
+            <div class="card-text mb-2">
+              <span class="fs-5">特性</span>
+              <ul>
+                <li>可置換圖片</li>
+                <li>動態文字顏色</li>
+              </ul>
+              <span class="fs-5 me-2">使用字型</span>
+              <a class="fs-5 text-decoration-none" target="_blank"
+                href="http://modi.jpn.org/font_timemachine-wa.php">時間機器</a>
+            </div>
+            <a href="./TimeClock/TypeD/TypeD.html" class="btn btn-secondary">TypeC-動態文字、圖片</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -104,7 +125,7 @@
       let load = document.querySelector('#load')
       setTimeout(() => {
         load.classList.add('d-none')
-      }, 200);
+      }, 100);
     }
   </script>
 </body>
