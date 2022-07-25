@@ -11,6 +11,15 @@
 </head>
 
 <body>
+  <!-- <div id="loading" class="container-fluid w-100 h-100 fixed-top bg-secondary">
+    <div class="row">
+      <div class="col"></div>
+    </div>
+  </div> -->
+  <div id="load" class="text-center fixed-top bg-white h-100">
+    <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status">
+    </div>
+  </div>
   <div class="container text-secondary">
     <div class="row mt-3 mb-4">
       <h1 class="fs-1">直播 時鐘樣式</h1>
@@ -18,8 +27,8 @@
       <span>內容、樣式、字型皆可客制</span>
     </div>
     <div class="row  mb-2">
-      <div class="col-12 col-lg-6">
-        <div class="card h-100">
+      <div class="col-12 col-lg-6 mb-2">
+        <div class="card h-100 ">
           <div class="h-50 mt-5 m-auto p-2 justify-content-center">
             <object title="TypeA" data="./TimeClock/TypeA/TypeA.html" type="application/pdf" width="240"
               height="100"></object>
@@ -33,7 +42,8 @@
                 <li>小巧、速度快</li>
               </ul>
               <span class="fs-5 me-2">使用字型</span>
-              <a class="fs-5 text-decoration-none" target="_blank" href="http://modi.jpn.org/font_timemachine-wa.php">時間機器</a>
+              <a class="fs-5 text-decoration-none" target="_blank"
+                href="http://modi.jpn.org/font_timemachine-wa.php">時間機器</a>
             </div>
             <a href="./TimeClock/TypeA/TypeA.html" class="btn btn-secondary">TypeA-透明背景</a>
           </div>
@@ -54,7 +64,8 @@
                 <li>完整日期、時間</li>
               </ul>
               <span class="fs-5 me-2">使用字型</span>
-              <a class="fs-5 text-decoration-none" target="_blank" href="https://justfont.com/huninn/">justfont 粉圓體</a>
+              <a class="fs-5 text-decoration-none" target="_blank" href="https://justfont.com/huninn/">justfont
+                粉圓體</a>
             </div>
             <a href="./TimeClock/TypeB/TypeB.html" class="btn btn-secondary">TypeB-背景色 (暫時停用)</a>
           </div>
@@ -90,6 +101,14 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
+  <script>
+    window.onload = function () {
+      let load = document.querySelector('#load')
+      setTimeout(() => {
+        load.classList.add('d-none')
+      }, 1000);
+    }
+  </script>
 </body>
 
 </html>
