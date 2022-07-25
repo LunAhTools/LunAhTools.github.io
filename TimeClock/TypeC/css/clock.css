@@ -1,6 +1,7 @@
 :root {
   --allheight: 2em;
   --allwidth: 10em;
+  --cerSize: 10em;
   --fsize: 2em;
 }
 
@@ -10,17 +11,47 @@ html {
 
 body {
   font-size: var(--fsize);
-}
-
-.img {
-  position: relative;
+  margin: 0px;
+  width: 15.5em;
+  height: 15.5em;
+  overflow: hidden;
 }
 
 #app {
+  position: relative;
   color: slateblue;
   padding: 0.7em;
   width: var(--allwidth);
   height: var(--allheight);
+  top: 6em;
+  left: 2.2em;
+}
+
+#cir {
+  position: absolute;
+  width: var(--cerSize);
+  height: var(--cerSize);
+  border: 0.5em;
+  border-style: dashed;
+  border-top: 1em;
+  border-radius: 100%;
+  top: -3.5em;
+  left: 0em;
+}
+
+#tt {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  background-color: red;
+  border: 10px solid darkred;
+  transform: rotate(45deg);
+  left: 4em;
+  top: -2em;
+}
+
+.img {
+  position: relative;
 }
 
 #clock {
@@ -29,7 +60,6 @@ body {
   text-align: center;
   top: 0.87em;
   left: 3.5em;
-
 }
 
 @font-face {

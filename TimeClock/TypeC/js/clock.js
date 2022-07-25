@@ -3,31 +3,40 @@ const app = new Vue({
   data: {
     time: moment(),
     timer: null,
+    sec: null,
     rgbtimer: null,
     styleClass: {
       R: 0,
       G: 0,
       B: 0,
-    }
+    },
+    deg: 90
+
   },
   created() {
     this.momentSetting()
     this.timer = setInterval(() => {
       this.time = moment()
-    }, 1000)
-    this.rgbtimer = setInterval(() => {
+      this.getTimeSec()
+      this.deg = ((this.sec / 60) * 360)
       this.styleClass.R = this.getRandom(1, 255)
       this.styleClass.G = this.getRandom(1, 255)
       this.styleClass.B = this.getRandom(1, 255)
-    }, 500);
+    }, 500)
   },
   computed: {
-    style() {
+    clockstyle() {
       return {
         'transition': '1s',
         'color': 'rgb(' + this.styleClass.R + ',' + this.styleClass.G + ',' + this.styleClass.B + ')'
       }
     },
+    cirsec() {
+      return {
+        'transition': '1s',
+        'transform': 'rotate(' + this.deg + 'deg)'
+      }
+    }
   },
   methods: {
     momentSetting() {
@@ -37,6 +46,9 @@ const app = new Vue({
     },
     getRandom(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    getTimeSec() {
+      this.sec = this.time.utc().seconds()
     }
   }
 })
