@@ -34,5 +34,5 @@ body {
 
 @font-face {
   font-family: fontSetting;
-  src: url(../font/Cubic_11_1.000_R.ttf) format("woff");
+  src: url(../font/Cubic_11_1.000_R.ttf) format("truetype");
 }
