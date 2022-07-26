@@ -24,16 +24,27 @@
 </head>
 
 <body>
-  <div id="load" class="text-center fixed-top bg-white h-100">
+  <!-- <div id="load" class="text-center fixed-top bg-white h-100">
     <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status">
     </div>
-  </div>
+  </div> -->
 
   <div class="container text-secondary">
-    <div class="row mt-3 mb-4">
-      <h1 class="fs-1">直播 時鐘樣式</h1>
-      <span>點選 Type文字 可開啟樣式</span>
-      <span>內容、樣式、字型皆可客制</span>
+    <div class="row mt-3 mb-4 justify-content-lg-center">
+      <div class="col-12 col-lg-5">
+        <h1 class="fs-1 mb-3">直播 時鐘樣式</h1>
+        <span class="d-block">點選 Type文字 可開啟樣式</span>
+        <span class="d-block mb-3">內容、樣式、字型皆可客制</span>
+        <div class="w-100 text-center d-lg-none">
+          <button class="btn btn-lg btn-secondary w-auto ">操作方式</button>
+        </div>
+      </div>
+      <div class="col-12 col-lg-5 d-none d-lg-block">
+        <div class="p-5 text-center">
+          <div class=" btn btn-lg btn-secondary w-auto">操作方式</div>
+        </div>
+      </div>
+
     </div>
 
     <div class="row mb-2">
@@ -133,7 +144,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
 
   </div>
@@ -143,12 +154,12 @@
     crossorigin="anonymous"></script>
 
   <script>
-    window.onload = function () {
-      let load = document.querySelector('#load')
-      setTimeout(() => {
-        load.classList.add('d-none')
-      }, 100);
-    }
+    // window.onload = function () {
+    //   let load = document.querySelector('#load')
+    //   setTimeout(() => {
+    //     load.classList.add('d-none')
+    //   }, 100);
+    // }
   </script>
 </body>
 
