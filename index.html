@@ -20,31 +20,60 @@
     .h-75em {
       height: 75em !important;
     }
+
+    .helpheight {
+      height: 100em !important;
+    }
   </style>
 </head>
 
 <body>
-  <!-- <div id="load" class="text-center fixed-top bg-white h-100">
+  <div id="load" class="text-center fixed-top bg-white h-100">
     <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status">
     </div>
-  </div> -->
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="clockHelp" tabindex="-1" aria-labelledby="clockHelpLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="clockHelpLabel">操作說明</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="m-auto w-100 helpheight" title="Help" src="./lib/helper.html" frameborder="0"
+            scrolling="no"></iframe>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="container text-secondary">
     <div class="row mt-3 mb-4 justify-content-lg-center">
-      <div class="col-12 col-lg-5">
-        <h1 class="fs-1 mb-3">直播 時鐘樣式</h1>
+      <div class="col-12 col-lg-4 text-center text-lg-end">
+        <h1 class="fs-1 mb-3 mt-4">直播 時鐘樣式</h1>
         <span class="d-block">點選 Type文字 可開啟樣式</span>
         <span class="d-block mb-3">內容、樣式、字型皆可客制</span>
-        <div class="w-100 text-center d-lg-none">
-          <button class="btn btn-lg btn-secondary w-auto ">操作方式</button>
+        <div class="w-100 text-center  d-lg-none">
+          <button type="button" class="btn btn-lg btn-secondary w-auto" data-bs-toggle="modal"
+            data-bs-target="#clockHelp">操作方式</button>
         </div>
       </div>
-      <div class="col-12 col-lg-5 d-none d-lg-block">
-        <div class="p-5 text-center">
-          <div class=" btn btn-lg btn-secondary w-auto">操作方式</div>
+      <div class="col-12 col-lg-4 d-none d-lg-block">
+        <div class="p-5 text-center text-lg-start">
+          <div class=" btn btn-lg btn-secondary w-auto">
+            <button type="button" class="btn btn-lg btn-secondary w-auto" data-bs-toggle="modal"
+              data-bs-target="#clockHelp">操作方式</button>
+          </div>
         </div>
       </div>
-
     </div>
 
     <div class="row mb-2">
@@ -132,9 +161,9 @@
               <span class="fs-5">特性</span>
               <ul>
                 <li>可置換圖片</li>
-                <li>動態文字顏色</li>
+                <li>CSS動畫負擔較小</li>
               </ul>
-              <span class="fs-5">使用字型</span>
+              <span class="fs-5 me-2">使用字型</span>
               <a class="fs-5 text-decoration-none" target="_blank"
                 href="http://modi.jpn.org/font_timemachine-wa.php">時間機器</a>
             </div>
@@ -154,12 +183,12 @@
     crossorigin="anonymous"></script>
 
   <script>
-    // window.onload = function () {
-    //   let load = document.querySelector('#load')
-    //   setTimeout(() => {
-    //     load.classList.add('d-none')
-    //   }, 100);
-    // }
+    window.onload = function () {
+      let load = document.querySelector('#load')
+      setTimeout(() => {
+        load.classList.add('d-none')
+      }, 1);
+    }
   </script>
 </body>
 
