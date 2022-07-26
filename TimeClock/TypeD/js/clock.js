@@ -12,7 +12,6 @@ const app = new Vue({
     },
     deg: 0,
     degrever:0,
-
   },
   created() {
     this.momentSetting()
@@ -24,13 +23,11 @@ const app = new Vue({
       this.styleClass.B = this.getRandom(1, 255)
     }, 500)
     this.cirtimer = setInterval(() => {
-      if (this.degrever >= 36000) {
+      if (this.degrever == 360) {
         this.degrever = 0
       }
       this.degrever += 10
-    }, 120);
-    //   this.deg = ((this.sec / 60) * 360)
-
+    }, 24);
   },
   computed: {
     clockstyle() {
@@ -39,15 +36,9 @@ const app = new Vue({
         'color': 'rgb(' + this.styleClass.R + ',' + this.styleClass.G + ',' + this.styleClass.B + ')'
       }
     },
-    // cirsec() {
-    //   return {
-    //     'transition': '1s',
-    //     'transform': 'rotate(-' + this.deg + 'deg)'
-    //   }
-    // },
     cirsecrever() {
       return {
-        'transition': '1.5s',
+        // 'transition': '1s',
         'transform': 'rotate(-' + this.degrever + 'deg)'
       }
     }

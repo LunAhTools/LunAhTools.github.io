@@ -11,7 +11,6 @@ const app = new Vue({
       B: 0,
     },
     deg: 90
-
   },
   created() {
     this.momentSetting()
@@ -33,7 +32,7 @@ const app = new Vue({
     },
     cirsec() {
       return {
-        'transition': '1s',
+        // 'transition': '1s',
         'transform': 'rotate(' + this.deg + 'deg)'
       }
     }
