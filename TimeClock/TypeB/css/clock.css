@@ -6,33 +6,39 @@
 
 html {
   background-color: transparent !important;
+  overflow: hidden;
 }
 
 body {
   margin: 0px;
   font-size: var(--fsize);
-  width: var(--allwidth);
-  height: var(--allheight);
 }
 
 #app {
-  position: absolute;
   color: darkred;
-  background-color: wheat;
-  border-radius: 1em;
-  box-shadow: 0px 0px 1em 0.2em wheat;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  top: 1.5em;
-  left: 1.5em;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  position: relative;
 }
 
 #clock {
   font-family: fontSetting;
   text-align: center;
+  width: 100%;
+  height: 50vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   margin: auto;
+}
+
+.bg {
+  background-color: wheat;
+  border-radius: 2em;
+  box-shadow: inset 0px 0px 1em 0.5em rgb(238, 204, 142);
 }
 
 @font-face {

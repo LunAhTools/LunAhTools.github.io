@@ -11,12 +11,14 @@
 </head>
 
 <body>
-  <!-- OBS套用尺寸大小 310*260 -->
+  <!-- OBS套用尺寸大小 auto -->
   <div id="app">
     <div id="clock">
-      <div>{{time.format('MM/DD YYYY')}}</div>
-      <div>{{time.format('dddd')}}</div>
-      <div>{{time.format('HH:mm:ss')}}</div>
+      <div class="bg">
+        <div>{{time.format('MM/DD YYYY')}}</div>
+        <div>{{time.format('dddd')}}</div>
+        <div>{{time.format('HH:mm:ss')}}</div>
+      </div>
     </div>
   </div>
   <script src="./lib/vue.min.js"></script>

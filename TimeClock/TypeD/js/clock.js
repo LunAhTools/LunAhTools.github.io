@@ -36,7 +36,7 @@ const app = new Vue({
         'color': 'rgb(' + this.styleClass.R + ',' + this.styleClass.G + ',' + this.styleClass.B + ')'
       }
     },
-    cirsecrever() {
+    cirsec() {
       return {
         // 'transition': '1s',
         'transform': 'rotate(-' + this.degrever + 'deg)'

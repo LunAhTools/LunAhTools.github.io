@@ -1,11 +1,12 @@
 :root {
   --allheight: 2.38em;
   --allwidth: 4.75em;
-  --fsize: 5em;
+  --fsize: 10vmax;
 }
 
 html {
   background-color: transparent !important;
+  overflow: hidden;
 }
 
 body {
@@ -14,15 +15,23 @@ body {
 }
 
 #app {
-  /* position: relative; */
-  width: var(--allwidth);
-  padding: 0px;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  position: relative;
 }
 
 #clock {
-  /* position: absolute; */
   font-family: fontSetting;
   text-align: center;
+  width: 100%;
+  height: 50vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
 #sec {

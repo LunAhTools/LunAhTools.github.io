@@ -2,72 +2,90 @@
   --allheight: 2em;
   --allwidth: 10em;
   --cerSize: 10em;
+  --imgSize: 2em;
+  --littleboxSize: 2rem;
   --fsize: 2em;
 }
 
 html {
   background-color: transparent !important;
-}
-
-body {
-  font-size: var(--fsize);
-  font-weight: bold;
-  margin: 0px;
-  width: 15.5em;
-  height: 15.5em;
   overflow: hidden;
 }
 
+body {
+  font-weight: bold;
+  margin: 0px;
+  font-size: var(--fsize);
+}
+
 #app {
-  position: relative;
   color: slateblue;
-  padding: 0.7em;
-  width: var(--allwidth);
-  height: var(--allheight);
-  top: 6em;
-  left: 2.2em;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  position: relative;
+  --w: 4;
+  --h: 3;
+}
+
+#app::before {
+  content: '';
+  width: 100%;
+  /* padding-top: calc(var(--h) * 100% / var(--w)); */
+  padding-top: 6em;
+  display: block;
+}
+
+#clock {
+  z-index: 7;
+  font-family: fontSetting;
+  text-align: center;
+  width: 100%;
+  height: 50vh;
+  position: absolute;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+#cirbox {
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  position: relative;
 }
 
 #cir {
+  color: palevioletred;
   position: absolute;
-  width: var(--cerSize);
-  height: var(--cerSize);
   border: 0.5em;
   border-style: dashed;
   border-top: 1em;
   border-radius: 100%;
-  top: -3.5em;
-  left: 0em;
+  width: var(--cerSize);
+  height: var(--cerSize);
+  top: -2.2em;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
-#tt {
+#littlebox {
   position: absolute;
-  width: 1em;
-  height: 1em;
+  width: var(--littleboxSize);
+  height: var(--littleboxSize);
   background-color: red;
   border: 10px solid darkred;
   transform: rotate(45deg);
-  left: 4.2em;
-  top: -2em;
-}
-
-.img {
-  position: relative;
-  left: 10px;
-  top: 5px;
-}
-
-img {
-  width: 72px;
-  height: 72px;
-}
-
-#clock {
-  position: absolute;
-  font-family: fontSetting;
-  text-align: center;
-  top: 0.87em;
-  left: 3.5em;
+  top: -10em;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
 @font-face {

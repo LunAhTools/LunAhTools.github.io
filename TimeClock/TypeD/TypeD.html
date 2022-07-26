@@ -11,23 +11,24 @@
 </head>
 
 <body>
-  <!-- OBS套用尺寸大小 550*640 -->
+  <!-- OBS套用尺寸大小 auto -->
   <div id="app">
-    <!-- <div id="cir" :style="cirsec">
-    </div> -->
-    <div id="cirrever" :style="cirsecrever">
-      <div id="ttrever">
-        <img src="./img/image.gif" alt="img">
-      </div>
-    </div>
-    <div class="img">
-      <img src="./img/imageA.gif" alt="img">
-    </div>
     <div id="clock" :style="clockstyle">
       <div>{{time.format('MM/DD YYYY')}}</div>
       <div>{{time.format('HH:mm:ss ddd')}}</div>
+      <div class="cirbox">
+        <div id="cir" :style="cirsec">
+          <div id="littlebox">
+            <div class="img">
+              <img src="./img/image.gif" alt="img">
+            </div>
+          </div>
+        </div>
+        <div class="imgA">
+          <img src="./img/imageA.gif" alt="img">
+        </div>
+      </div>
     </div>
-
   </div>
   <script src="./lib/vue.min.js"></script>
   <script src="./js/clock.js"></script>

@@ -32,7 +32,7 @@ const app = new Vue({
     },
     cirsec() {
       return {
-        // 'transition': '1s',
+        'transition': '0.3s',
         'transform': 'rotate(' + this.deg + 'deg)'
       }
     }
