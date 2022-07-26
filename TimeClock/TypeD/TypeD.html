@@ -13,11 +13,11 @@
 <body>
   <!-- OBS套用尺寸大小 auto -->
   <div id="app">
-    <div id="clock" :style="clockstyle">
+    <div id="clock">
       <div>{{time.format('MM/DD YYYY')}}</div>
       <div>{{time.format('HH:mm:ss ddd')}}</div>
       <div class="cirbox">
-        <div id="cir" :style="cirsec">
+        <div id="cir"> <!--:style="cirsec"-->
           <div id="littlebox">
             <div class="img">
               <img src="./img/image.gif" alt="img">
