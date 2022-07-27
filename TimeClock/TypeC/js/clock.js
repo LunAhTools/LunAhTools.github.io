@@ -50,7 +50,7 @@ const app = new Vue({
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
     getTimeSec() {
-      this.sec = this.time.utc().seconds()
+      this.sec = this.time.seconds()
     }
   }
 })

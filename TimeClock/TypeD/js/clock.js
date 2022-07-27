@@ -15,9 +15,6 @@ const app = new Vue({
       moment.locale('zh-tw', {
         weekdays: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六",]
       })
-    },
-    getRandom(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
   }
 })
