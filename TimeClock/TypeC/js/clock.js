@@ -17,6 +17,9 @@ const app = new Vue({
     this.timer = setInterval(() => {
       this.time = moment()
       this.getTimeSec()
+      if (this.deg === 360) {
+        this.deg = ((this.sec / 60) * 360)
+      }
       this.deg = ((this.sec / 60) * 360)
       this.styleClass.R = this.getRandom(1, 255)
       this.styleClass.G = this.getRandom(1, 255)
@@ -32,10 +35,10 @@ const app = new Vue({
     },
     cirsec() {
       return {
-        'transition': '0.3s',
+        'transition': '0.05s',
         'transform': 'rotate(' + this.deg + 'deg)'
       }
-    }
+    },
   },
   methods: {
     momentSetting() {

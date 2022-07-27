@@ -73,7 +73,7 @@
               <iframe class="m-auto w-100 h-15em" title="TypeA" src="./TimeClock/TypeA/TypeA.html"></iframe>
             </div>
             <div class="card-body h-50">
-              <h5 class="card-title">TypeA-普通透明背景 size:auto</h5>
+              <h5 class="card-title">TypeA-簡約透明背景 size:auto</h5>
               <div class="card-text">
                 <span class="fs-5">特性</span>
                 <ul>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="card-footer">
-              <a class="btn btn-secondary w-100" target="_blank" href="./TimeClock/TypeA/TypeA.html">TypeA-透明背景</a>
+              <a class="btn btn-secondary w-100" target="_blank" href="./TimeClock/TypeA/TypeA.html">TypeA-簡約透明背景</a>
             </div>
           </div>
         </div>
@@ -179,25 +179,38 @@
                 scrolling="no"></iframe>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
             </div>
           </div>
         </div>
       </div>
-
       <div class="modal fade" id="precautions" tabindex="-1" aria-labelledby="precautionsLabel" aria-hidden="true">
-        <div
-          class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-md-down modal-fullscreen-lg-down">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg ">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="precautionsLabel">注意事項</h5>
+              <h5 class="modal-title" id="precautionsLabel">授權注意事項</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
+              <div class="row">
+                <div class="col">
+                  <ul>
+                    <li>免費提供四種樣式</li>
+                    <li>可用於商業與非商業用途</li>
+                    <li>可以不用特別標示作者與來源，但如果有我會感謝你</li>
+                    <li>不可出售或二次發佈</li>
+                    <li>不可重製、改作</li>
+                    <li>如果有需要客製化，可以聯繫我</li>
+                  </ul>
+                  <ul>
+                    <dd>Twitter <a class="text-decoration-none" href="https://twitter.com/LunAh_Eric">@LunAh_Eric</a></dd>
+                    <dd>Email <a class="text-decoration-none" href="mailto:luochen9913@gmail.com">luochen9913@gmail.com</a></dd>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
             </div>
           </div>
         </div>
@@ -215,7 +228,7 @@
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
             </div>
           </div>
         </div>
@@ -223,11 +236,15 @@
 
     </div>
 
-    <div class="container-fluid mt-3">
-      <div class="row">
-        <div id="copyright" class="col text-center text-secondary">
-          <a class="link-secondary text-decoration-none mx-2" target="_blank"
-            href="https://twitter.com/LunAh_Eric">版權所有© {{time.format('YYYY')}} LunAh</a></span>
+    <div class="container-fluid my-3">
+      <div class="row justify-content-center align-baseline">
+        <div class="col-2 text-end">
+          <img src="./lib/img/Cc_by-nd_icon.svg" alt="cc">
+        </div>
+        <div class="col-2 text-start">
+          <a class="btn btn-light bg-transparent border-0 link-secondary text-decoration-none h-100" target="_blank"
+            href="https://twitter.com/LunAh_Eric">
+            {{time.format('YYYY')}} @LunAh_Eric </a>
         </div>
       </div>
     </div>
