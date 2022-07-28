@@ -10,35 +10,24 @@ const app = new Vue({
       G: 0,
       B: 0,
     },
-    deg: 90
+    gagueValue: 0
   },
   created() {
     this.momentSetting()
     this.timer = setInterval(() => {
       this.time = moment()
-      this.getTimeSec()
-      if (this.deg === 360) {
-        this.deg = ((this.sec / 60) * 360)
-      }
-      this.deg = ((this.sec / 60) * 360)
-      this.styleClass.R = this.getRandom(1, 255)
-      this.styleClass.G = this.getRandom(1, 255)
-      this.styleClass.B = this.getRandom(1, 255)
+      this.gagueValue = moment().seconds() / 0.6
+
+
     }, 500)
   },
   computed: {
-    clockstyle() {
+    gaugeStyle() {
       return {
-        'transition': '1s',
-        'color': 'rgb(' + this.styleClass.R + ',' + this.styleClass.G + ',' + this.styleClass.B + ')'
+        // 'transition': '1s',
+        '--value': this.gagueValue,
       }
-    },
-    cirsec() {
-      return {
-        'transition': '0.05s',
-        'transform': 'rotate(' + this.deg + 'deg)'
-      }
-    },
+    }
   },
   methods: {
     momentSetting() {

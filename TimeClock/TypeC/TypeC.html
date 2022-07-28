@@ -5,23 +5,72 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/clock.css">
   <script src="./lib/moment.js"></script>
+  <link rel="stylesheet" href="./lib/tocas.css">
+  <!-- <link rel="stylesheet" href="./lib/tocas.min.css"> -->
+  <link rel="stylesheet" href="./css/clock.css">
   <title>TypeC</title>
+  <style>
+    #gauge.is-usersize {
+      --size: 17rem;
+      color: var(--ts-negative-400);
+
+    }
+
+    #gauge {
+      --thickness: calc(var(--size) / 28);
+      /* box-shadow: 1rem .5rem 1rem 0.5rem inset var(--ts-negative-400); */
+    }
+
+    #gauge .bar::before {
+      transition: 1s;
+    }
+
+    #gaugeText {
+      color: var(--ts-warning-400);
+      font-size: 2rem;
+      text-align: center;
+      line-height: 2rem;
+    }
+
+    #box {
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border-radius: 100%;
+      background-color: var(--ts-gray-500);
+      box-shadow: 1rem .5rem 1rem 0.5rem inset var(--ts-primary-400);
+      transition: 1s;
+      animation: boxAnimat 6s infinite linear;
+    }
+
+    @keyframes boxAnimat {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
   <!-- OBS套用尺寸大小 auto -->
-  <div id="app">
-    <div id="clock" :style="clockstyle">
-      <div>{{time.format('MM/DD YYYY')}}</div>
-      <div>{{time.format('HH:mm:ss ddd')}}</div>
-      <div id="cirbox">
-        <div id="cir" :style="cirsec">
-          <div id="littlebox"></div>
+  <div class="ts-center">
+    <div id="app">
+      <div id="gauge" class="ts-gauge is-centered is-usersize is-circular">
+        <div class="bar" :style="gaugeStyle">
+          <div id="gaugeText" class="ts-text is-big">
+            <div>{{time.format('MM/DD YYYY')}}</div>
+            <div>{{time.format('HH:mm:ss ddd')}}</div>
+          </div>
         </div>
       </div>
+      <div id="box"></div>
     </div>
+
   </div>
   <script src="./lib/vue.min.js"></script>
   <script src="./js/clock.js"></script>
