@@ -1,89 +1,54 @@
-/* :root {
-  --allheight: 2em;
-  --allwidth: 10em;
-  --cerSize: 10em;
-  --imgSize: 2em;
-  --littleboxSize: 2rem;
-  --fsize: 2em;
-} */
-
 html {
   background-color: transparent !important;
-  /* overflow: hidden; */
+}
+body{
+  overflow: hidden;
 }
 
-/* body {
+#gauge.is-usersize {
+  --size: 25rem;
+  color: var(--ts-negative-400);
+}
+
+#gauge {
+  --thickness: calc(var(--size) / 30);
+  /* position: relative; */
+}
+
+#gauge .bar::before {
+  transition: 1s;
+
+}
+
+#gaugeText {
+  color: rebeccapurple;
+  font-family: fontSetting !important;
   font-weight: bold;
-  margin: 0px;
-  font-size: var(--fsize);
-} */
-
-/* #app {
-  color: slateblue;
-  width: 100%;
-  height: 100vh;
-  margin: auto;
-  position: relative;
-} */
-
-/* #app::before {
-  content: '';
-  width: 100%;
-  padding-top: 6em;
-  display: block;
-} */
-
-/* #clock {
-  z-index: 7;
-  font-family: fontSetting;
+  font-size: 3rem;
   text-align: center;
-  width: 100%;
-  height: 50vh;
+  line-height: 3rem;
+
+}
+
+#box {
+  z-index: -1;
   position: absolute;
-  position: relative;
+  width: 100%;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
-  margin: auto;
-} */
-
-/* #cirbox {
-  width: 100%;
-  margin: auto;
-  position: absolute;
-  position: relative;
-} */
-
-/* #cir {
-  color: palevioletred;
-  position: absolute;
-  border: 0.5em;
-  border-style: dashed;
-  border-top: 1em;
+  bottom: 0;
   border-radius: 100%;
-  width: var(--cerSize);
-  height: var(--cerSize);
-  top: -2.2em;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-} */
+  box-shadow: 1rem .5rem 1rem 0.5rem inset var(--ts-primary-400);
+  transition: 1s;
+  animation: boxAnimat 6s infinite linear reverse;
+}
 
-/* #littlebox {
-  position: absolute;
-  width: var(--littleboxSize);
-  height: var(--littleboxSize);
-  background-color: red;
-  border: 10px solid darkred;
-  transform: rotate(45deg);
-  top: -10em;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-} */
+@keyframes boxAnimat {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @font-face {
   font-family: fontSetting;
