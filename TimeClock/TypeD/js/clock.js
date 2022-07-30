@@ -18,24 +18,15 @@ const app = new Vue({
       this.time = moment()
       this.getTimeSec()
       if (this.deg === 360) {
-        this.deg = ((this.sec / 60) * 360)
+        this.deg = 360
       }
       this.deg = ((this.sec / 60) * 360)
-      this.styleClass.R = this.getRandom(1, 255)
-      this.styleClass.G = this.getRandom(1, 255)
-      this.styleClass.B = this.getRandom(1, 255)
     }, 500)
   },
   computed: {
-    clockstyle() {
-      return {
-        'transition': '1s',
-        'color': 'rgb(' + this.styleClass.R + ',' + this.styleClass.G + ',' + this.styleClass.B + ')'
-      }
-    },
     cirsec() {
       return {
-        'transition': '0.05s',
+        'transition': '1s',
         'transform': 'rotate(' + this.deg + 'deg)'
       }
     },

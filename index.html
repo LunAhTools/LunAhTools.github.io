@@ -33,10 +33,10 @@
 <body>
 
   <div id="app">
-    <!-- <div id="load" :class="load" class="text-center fixed-top bg-white h-100">
+    <div id="load" :class="load" class="text-center fixed-top bg-white h-100">
       <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status">
       </div>
-    </div> -->
+    </div>
     <div class="container mt-3 text-secondary">
 
       <div class="row mb-4 justify-content-lg-center">
@@ -146,7 +146,7 @@
               <iframe class="m-auto w-100 h-30em" title="TypeD" src="./TimeClock/TypeD/TypeD.html"></iframe>
             </div>
             <div class="card-body ">
-              <h5 class="card-title">TypeD-純CSS動畫 size:auto <br> 建議大小 455*480</h5>
+              <h5 class="card-title">TypeD-秒針環形動畫 <br> 建議大小 470*470</h5>
               <div class="card-text">
                 <span class="fs-5">特性</span>
                 <ul>
@@ -256,8 +256,10 @@
                     <li>如果有需要客製化，可以聯繫我</li>
                   </ul>
                   <ul>
-                    <dd>Twitter <a class="text-decoration-none" href="https://twitter.com/LunAh_Eric">@LunAh_Eric</a></dd>
-                    <dd>Email <a class="text-decoration-none" href="mailto:luochen9913@gmail.com">luochen9913@gmail.com</a></dd>
+                    <dd>Twitter <a class="text-decoration-none" href="https://twitter.com/LunAh_Eric">@LunAh_Eric</a>
+                    </dd>
+                    <dd>Email <a class="text-decoration-none"
+                        href="mailto:luochen9913@gmail.com">luochen9913@gmail.com</a></dd>
                   </ul>
                 </div>
               </div>
@@ -307,7 +309,21 @@
     crossorigin="anonymous"></script>
 
   <script src="./lib/vue.min.js"></script>
-  <script src="./lib/main.js"></script>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        load: [],
+        time: moment(),
+      },
+      created() {
+        setTimeout(() => {
+          this.load = ['d-none']
+        }, 900);
+      },
+    })
+  </script>
 </body>
 
 </html>

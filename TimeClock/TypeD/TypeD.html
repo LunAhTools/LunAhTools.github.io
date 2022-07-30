@@ -5,24 +5,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/clock.css">
   <script src="./lib/moment.js"></script>
+  <link rel="stylesheet" href="./lib/tocas.min.css">
+  <link rel="stylesheet" href="./css/clock.css">
   <title>TypeD</title>
 </head>
 
 <body>
-  <!-- OBS套用尺寸大小 auto -->
-  <div id="app">
-    <div id="clock" :style="clockstyle">
-      <div>{{time.format('MM/DD YYYY')}}</div>
-      <div>{{time.format('HH:mm:ss ddd')}}</div>
-      <div id="cirbox">
-        <div id="cir" :style="cirsec">
-          <div id="littlebox"></div>
-        </div>
+  <!-- OBS套用尺寸大小 475*475 -->
+  <div class="ts-center">
+    <div id="app">
+      <div id="clockText" class="ts-text">
+        <div>{{time.format('MM/DD YYYY')}}</div>
+        <div>{{time.format('HH:mm:ss ddd')}}</div>
+      </div>
+      <div id="sunBg"></div>
+      <div id="circular" :style="cirsec">
+        <div id="moon"></div>
+        <div id="star"></div>
       </div>
     </div>
   </div>
+
   <script src="./lib/vue.min.js"></script>
   <script src="./js/clock.js"></script>
 </body>

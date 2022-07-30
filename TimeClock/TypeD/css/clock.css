@@ -1,10 +1,9 @@
 :root {
-  --allheight: 2em;
-  --allwidth: 10em;
   --cerSize: 10em;
-  --imgSize: 2em;
-  --littleboxSize: 2rem;
-  --fsize: 2em;
+  --littleboxSize: 5rem;
+  --fsize: 2.5rem;
+  --starBgColor: rgba(255, 255, 0, 0.7);
+  --starBorderColor: rgb(236, 193, 0);
 }
 
 html {
@@ -14,81 +13,93 @@ html {
 
 body {
   font-weight: bold;
-  margin: 0px;
   font-size: var(--fsize);
+  overflow: hidden;
 }
 
-#app {
-  color: slateblue;
-  width: 100%;
-  height: 100vh;
-  margin: auto;
-  position: relative;
-  --w: 4;
-  --h: 3;
-}
-
-#app::before {
-  content: '';
-  width: 100%;
-  /* padding-top: calc(var(--h) * 100% / var(--w)); */
-  padding-top: 6em;
-  display: block;
-}
-
-#clock {
-  z-index: 7;
-  font-family: fontSetting;
-  text-align: center;
-  width: 100%;
-  height: 50vh;
+#sunBg {
   position: absolute;
-  position: relative;
+  width: 100%;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  margin: auto;
-}
-
-#cirbox {
-  width: 100%;
-  margin: auto;
-  position: absolute;
-  position: relative;
-}
-
-#cir {
-  color: palevioletred;
-  position: absolute;
-  border: 0.5em;
-  border-style: dashed;
-  border-top: 1em;
   border-radius: 100%;
+  box-shadow: .5em 1em 1.2em .1em rgb(165, 125, 22) inset;
+  background-color: goldenrod;
+  transition: 2s;
+  animation: suntrun 10s infinite linear reverse;
+}
+
+#circular {
+  position: relative;
   width: var(--cerSize);
   height: var(--cerSize);
-  top: -2.2em;
+}
+
+#moon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: var(--cerSize);
+  height: var(--cerSize);
+  box-shadow: 0px -3rem 10px 1.4rem rgb(253, 222, 142) inset;
+  border-radius: 50%;
+}
+
+#star {
+  width: var(--littleboxSize);
+  height: var(--littleboxSize);
+  background-color: var(--starBorderColor);
+  border: 10px solid var(--starBorderColor);
+  transform: rotate(45deg);
+  border-radius: 5px;
+  margin: auto;
+  position: absolute;
+  top: -24.2rem;
   right: 0;
   bottom: 0;
   left: 0;
-  margin: auto;
 }
 
-#littlebox {
+#star::before {
+  content: '';
   position: absolute;
   width: var(--littleboxSize);
   height: var(--littleboxSize);
-  background-color: red;
-  border: 10px solid darkred;
-  transform: rotate(45deg);
-  top: -10em;
+  background-color: var(--starBgColor);
+  border: 10px solid var(--starBorderColor);
+  transform: rotate(-45deg);
+  border-radius: 5px;
+  top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: -10px;
   margin: auto;
+}
+
+#clockText {
+  z-index: 9;
+  position: absolute;
+  top: 9.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: black;
+  font-family: fontSetting !important;
+  text-align: center;
+  font-size: 3rem;
 }
 
 @font-face {
   font-family: fontSetting;
   src: url(../font/timemachine-wa.ttf) format("truetype");
+}
+
+@keyframes suntrun {
+  100% {
+    transform: rotate(1turn);
+  }
 }
