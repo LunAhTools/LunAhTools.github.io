@@ -41,9 +41,9 @@
 
       <div class="row mb-4 justify-content-lg-center">
         <div class="col-12 col-lg-4 text-center text-lg-end">
-          <h1 class="fs-1 mb-3 mt-4">直播 時鐘樣式</h1>
-          <span class="d-block">點選 Type文字 可開啟樣式</span>
-          <span class="d-block mb-3">內容、樣式、字型皆可客制</span>
+          <div class="fs-1 mb-3 mt-4">直播 時鐘樣式</div>
+          <!-- <span class="d-block">點選 Type文字 可開啟樣式</span> -->
+          <span class="d-block mb-3">內容、樣式、字型皆可客製</span>
           <div class=" w-100 text-center d-lg-none">
             <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="modal"
               data-bs-target="#clockHelp">操作方式</button>
@@ -122,7 +122,7 @@
               <iframe class="m-auto w-100 h-30em" title="TypeC" src="./TimeClock/TypeC/TypeC.html"></iframe>
             </div>
             <div class="card-body">
-              <h5 class="card-title">TypeC-秒針環形動畫 size:auto <br> 建議大小 375*375</h5>
+              <h5 class="card-title">TypeC-秒針環形動畫 <br> 建議大小 375*375</h5>
               <div class="card-text">
                 <span class="fs-5">特性</span>
                 <ul>
@@ -166,7 +166,7 @@
 
       </div>
 
-      <div class="row mb-2">
+      <!-- <div class="row mb-2">
 
         <div class="col-12 col-lg-6">
           <div class="card h-100">
@@ -187,14 +187,14 @@
               </div>
             </div>
             <div class="card-footer">
-              <!-- <a class="btn btn-secondary w-100" target="_blank" href="./TimeClock/TypeC/TypeC.html">TypeE-動態文字、秒針動畫</a> -->
+              <a class="btn btn-secondary w-100" target="_blank" href="./TimeClock/TypeC/TypeC.html">TypeE-動態文字、秒針動畫</a>
               <a class="btn btn-secondary w-100" target="_blank" href="#">TypeE-動態文字、秒針動畫</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-lg-6">
-          <!-- <div class="card h-100">
+          <div class="card h-100">
             <div class="text-center ">
               <iframe class="m-auto w-100 h-30em" title="TypeD" src="./TimeClock/TypeD/TypeD.html"></iframe>
             </div>
@@ -213,10 +213,10 @@
             <div class="card-footer">
               <a class="btn btn-secondary w-100" target="_blank" href="./TimeClock/TypeD/TypeD.html">TypeD-動態文字、圖片</a>
             </div>
-          </div> -->
+          </div>
         </div>
 
-      </div>
+      </div> -->
 
       <div class="modal fade" id="clockHelp" tabindex="-1" aria-labelledby="clockHelpLabel" aria-hidden="true">
         <div
@@ -238,7 +238,7 @@
       </div>
 
       <div class="modal fade" id="precautions" tabindex="-1" aria-labelledby="precautionsLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg ">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="precautionsLabel">授權注意事項</h5>
@@ -272,15 +272,31 @@
       </div>
 
       <div class="modal fade" id="customization" tabindex="-1" aria-labelledby="customizationLabel" aria-hidden="true">
-        <div
-          class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-md-down modal-fullscreen-lg-down">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="customizationLabel">客製選項</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
+              <div class="row">
+                <div class="col">
+                  <ul>
+                    <dd>目前編輯器開發中，如果有需要客製化可以用Email或是twitter聯絡我</dd>
+                    <dd>可客製項目，亦可基於四種模板下去修改</dd>
+                    <li>各式顏色</li>
+                    <li>邊框調整</li>
+                    <li>字型替換 (需自備字型，建議使用開源並且可商用字型)</li>
+                    <li>增加圖片</li>
+                    <li>動畫調整</li>
+                    <dd class="mt-3">Twitter <a class="text-decoration-none"
+                        href="https://twitter.com/LunAh_Eric">@LunAh_Eric</a>
+                    </dd>
+                    <dd>Email <a class="text-decoration-none"
+                        href="mailto:luochen9913@gmail.com">luochen9913@gmail.com</a></dd>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
@@ -290,6 +306,33 @@
       </div>
 
     </div>
+
+    <!-- <div class="container mt-3 text-secondary">
+      <div class="row mb-4 justify-content-lg-center">
+        <div class="col-12 col-lg-4 text-center text-lg-end">
+          <div class="fs-1 mb-3 mt-4">靜/動態背景</div>
+          <span>可客製</span>
+          <div class=" w-100 text-center d-lg-none">
+            <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="modal"
+              data-bs-target="#clockHelp">操作方式</button>
+            <button type="button" class="btn btn-lg btn-warning" data-bs-toggle="modal"
+              data-bs-target="#precautions">注意事項</button>
+            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal"
+              data-bs-target="#customization">客製選項</button>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 d-none d-lg-block align-self-center">
+          <div class="text-lg-center h-100">
+            <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="modal"
+              data-bs-target="#clockHelp">操作方式</button>
+            <button type="button" class="btn btn-lg btn-warning" data-bs-toggle="modal"
+              data-bs-target="#precautions">注意事項</button>
+            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal"
+              data-bs-target="#customization">客製選項</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
     <div class="container-fluid my-3">
       <div class="row row-cols-auto row-cols-lg-2 justify-content-center align-baseline">
