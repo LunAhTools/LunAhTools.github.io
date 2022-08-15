@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-hant-tw">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <title>Hello, world!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      font-family: sans-serif;
+    }
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+
+    .ctrl {
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 5px;
+      left: 3px;
+    }
+
+    .ctrl>input {
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+
+    .ctrl>button {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 1rem;
+    }
+
+    .marquee {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .marquee>.box {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .marquee>.box>.li {
+      margin: 5px 0;
+      padding: 0 10px;
+      font-size: 1.5rem;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateY(45%);
+      }
+
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="ctrl">
+      <input placeholder="輸入文字" type="text" v-model="wordInput" v-on:keyup.enter="add">
+      <button v-on:click="add">填入</button>
+      <input type="checkbox" id="loop" v-model="openLoop">
+      <label for="loop">循環</label>
+    </div>
+    <div class="marquee" :style="marquee">
+      <div class="box">
+        <div class="li" v-for="(item, index) in boxList" :data-value="index" :key="index" @click="remove">{{item}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const NewVue = new Vue({
+      el: '#app',
+      data: {
+        boxList: [],
+        wordInput: '',
+        openLoop: false,
+      },
+      computed: {
+        marquee() {
+          if (this.openLoop) {
+            return {
+              'animation': `marquee ${this.boxList.length * 5}s linear infinite alternate`,
+            }
+          }
+        }
+      },
+      methods: {
+        add() {
+          let _temp = `．${this.wordInput}`;
+          this.boxList.push(_temp);
+          this.wordInput = '';
+        },
+        remove: function (event) {
+          let target = event.target.getAttribute('data-value');
+          this.boxList.splice(this.boxList.indexOf(this.boxList[target]), 1);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
