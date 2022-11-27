@@ -1,0 +1,149 @@
+:root {
+  --allHeight: 7em;
+  --allWidth: 5em;
+  --fSize: 3em;
+}
+
+html {
+  background-color: transparent !important;
+  line-height: normal;
+}
+
+body {
+  overflow: hidden;
+}
+
+span[textNowrap] {
+  white-space: nowrap;
+}
+
+#app {
+  padding: 0px;
+  position: relative;
+}
+
+#clock {
+  width: var(--allWidth);
+  font-size: var(--fSize);
+  font-family: fontSetting;
+  text-align: center;
+  margin: 0.5rem;
+  padding-top: 8px;
+}
+
+#sec {
+  font-size: 0.75em;
+}
+
+@font-face {
+  font-display: auto;
+  font-family: fontSetting;
+  src: url(../font/MedjedGlyph.otf) format("woff");
+}
+
+#userCtrl {
+  margin-top: 5rem;
+  margin-left: 0.5rem;
+}
+
+.column {
+  text-align: center;
+}
+
+.ts-selection {
+  display: flex;
+  justify-content: center;
+}
+
+.ctrlText {
+  font-size: 1rem;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.settingSet {
+  display: flex;
+}
+
+.settingSet>div {
+  justify-content: start;
+}
+
+div[borderSetting],
+div[bgSetting] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+div[bgSetting] {
+  z-index: -1;
+}
+
+.ts-switch {
+  align-items: center;
+}
+
+.circle .clr-field button {
+  width: 22px;
+  height: 22px;
+  left: 5px;
+  right: auto;
+  border-radius: 5px;
+  z-index: 9;
+}
+
+.circle .clr-field button {
+  border-radius: 50%;
+}
+
+input[type="range"] {
+  border-radius: 0px .4rem .4rem 0px !important;
+}
+
+.cc {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.cc>.ts-notice {
+  display: flex;
+  align-items: center;
+  margin-left: .5rem;
+  margin-bottom: .5rem;
+}
+
+.cc a {
+  text-decoration: none;
+  padding: .5rem;
+  line-height: 1;
+}
+
+.cc-year {
+  align-self: center;
+  background: var(--ts-gray-800);
+  border: 1px solid transparent;
+  border-radius: 100rem;
+  color: var(--ts-gray-50);
+  font-weight: 400;
+  line-height: 1;
+  padding: .225rem .5rem;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.cc-cont {
+  display: flex !important;
+  align-items: center;
+}
+
+.cc-cont>div:nth-child(1) {
+  margin-right: .5rem;
+}

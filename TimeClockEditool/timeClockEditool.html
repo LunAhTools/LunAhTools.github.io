@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./css/tocas.min.css">
+  <link rel="stylesheet" href="./css/clock.css">
+  <link rel="stylesheet" href="./css/coloris.min.css">
+  <script src="./js/moment.js"></script>
+  <script src="./js/coloris.min.js"></script>
+  <title>時鐘</title>
+
+</head>
+
+<body>
+  <div id="app" :style="marginSetting">
+
+    <div id="clock" :style="clockStyle">
+      <span :style="fontStyle">
+        <div>{{time.format('MM.DD ddd')}}</div>
+        <div>{{time.format('HH:mm:')}}<span id="sec">{{time.format('ss')}}</span>
+        </div>
+      </span>
+      <div borderSetting :style="borderStyle"></div>
+      <div bgSetting :style="bgStyle"></div>
+    </div>
+    <div id="userCtrl">
+      <button class="ts-button" v-on:click="openModel">設定</button>
+      <button class="ts-button" v-on:click="removeCookie">清除存檔</button>
+      <div class="ts-modal" :class="settingModal">
+        <div class="content">
+          <div class="ts-content">
+            <div class="ts-content is-dense">
+              <div class="ts-header">設定</div>
+            </div>
+            <div class="ts-divider"></div>
+            <div class="ts-space"></div>
+            <!-- <div class="ts-input is-fluid ts-file is-start-labeled ">
+              <span textNowrap class="label" >讀取檔案</span>
+              <input type="file">
+            </div>
+            <div class="ts-space"></div>
+            <div class="ts-divider"></div>
+            <div class="ts-space"></div> -->
+            <label class="ts-switch">
+              <input type="checkbox" v-model="rootStyle.marginSwitch" />
+              <span>外距調整 (危險功能)</span>
+            </label>
+            <div class="settingSet" v-show="rootStyle.marginSwitch">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">外部間距</span>
+                <input v-on:input="saveCookie" type="range" min="0" max="100" step="1"
+                  v-model="rootStyle.marginSetting">
+              </div>
+            </div>
+            <div class="settingSet">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">整體寬度</span>
+                <input v-on:input="saveCookie" type="range" min="4" max="30" step="1" v-model="rootStyle.width">
+              </div>
+            </div>
+            <label class="ts-switch">
+              <input type="checkbox" v-model="rootStyle.padSwitch" />
+              <span>內距切換</span>
+            </label>
+            <div class="settingSet" v-show="!rootStyle.padSwitch">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">內部間距</span>
+                <input v-on:input="saveCookie" type="range" min="0" max="100" step="1" class="ts-butto"
+                  v-model="rootStyle.padding">
+              </div>
+            </div>
+            <span v-show="rootStyle.padSwitch">
+              <div class="settingSet">
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">內部間距．上</span>
+                  <input v-on:input="saveCookie" type="range" min="0" max="100" step="1" class="ts-butto"
+                    v-model="rootStyle.padTop">
+                </div>
+              </div>
+              <div class="settingSet">
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">內部間距．右</span>
+                  <input v-on:input="saveCookie" type="range" min="0" max="100" step="1" class="ts-butto"
+                    v-model="rootStyle.padRight">
+                </div>
+              </div>
+              <div class="settingSet">
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">內部間距．下</span>
+                  <input v-on:input="saveCookie" type="range" min="0" max="100" step="1" class="ts-butto"
+                    v-model="rootStyle.padButtom">
+                </div>
+              </div>
+              <div class="settingSet">
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">內部間距．左</span>
+                  <input v-on:input="saveCookie" type="range" min="0" max="100" step="1" class="ts-butto"
+                    v-model="rootStyle.padLeft">
+                </div>
+              </div>
+            </span>
+            <div class="settingSet">
+              <div class="circle ctrlText ts-input is-start-labeled">
+                <span textNowrap class="label">文字顏色</span>
+                <input v-on:input="saveCookie" type="text" placeholder="文字顏色" class="ts-button coloris colorInterFace"
+                  v-model="rootStyle.fontColor">
+              </div>
+            </div>
+            <div class="settingSet">
+              <div class="circle ctrlText ts-input is-start-labeled">
+                <span textNowrap class="label">背景顏色</span>
+                <input v-on:input="saveCookie" type="text" placeholder="背景顏色" class="ts-button coloris colorInterFace"
+                  v-model="style.bgColor">
+              </div>
+            </div>
+            <div class="ts-selection">
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="solid" name="borderStyle" checked
+                  v-model="style.border.borderStyle" />
+                <div class="text">實線</div>
+              </label>
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="hidden" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">隱藏</div>
+              </label>
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="dotted" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">圓點</div>
+              </label>
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="dashed" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">虛線</div>
+              </label>
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="double" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">雙實線</div>
+              </label>
+            </div>
+            <div class="ts-selection">
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="groove" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">雕刻</div>
+              </label>
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="ridge" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">浮雕</div>
+              </label>
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="inset" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">陷入</div>
+              </label>
+              <label class="item">
+                <input v-on:change="saveCookie" type="radio" value="outset" name="borderStyle"
+                  v-model="style.border.borderStyle" />
+                <div class="text">凸出</div>
+              </label>
+            </div>
+            <div class="settingSet">
+              <div class="circle ctrlText ts-input is-start-labeled">
+                <span textNowrap class="label">框線顏色</span>
+                <input v-on:input="saveCookie" type="text" placeholder="框線顏色" class="ts-button coloris colorInterFace"
+                  v-model="style.border.borderColor">
+              </div>
+            </div>
+            <div class="ctrlText ts-input is-labeled">
+              <span textNowrap class="label">框線圓角</span>
+              <input v-on:input="saveCookie" type="range" min="1" max="50" value="1" step="1"
+                v-model="style.border.borderRadius">
+            </div>
+            <label class="ts-switch">
+              <input type="checkbox" v-model="style.borderSwitch" />
+              <span>框線切換</span>
+            </label>
+            <div class="settingSet" v-show="!style.borderSwitch">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">框線尺寸</span>
+                <input v-on:input="saveCookie" type="number" placeholder="框線尺寸" v-model="style.border.borderSize">
+                <span class="label">px</span>
+              </div>
+            </div>
+            <span v-show="style.borderSwitch">
+              <div class="settingSet">
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">上框線</span>
+                  <input v-on:input="saveCookie" type="number" min="0" v-model="style.border.top">
+                  <span class="label">px</span>
+                </div>
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">下框線</span>
+                  <input v-on:input="saveCookie" type="number" min="0" v-model="style.border.bottom">
+                  <span class="label">px</span>
+                </div>
+              </div>
+              <div class="settingSet">
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">左框線</span>
+                  <input v-on:input="saveCookie" type="number" min="0" v-model="style.border.left">
+                  <span class="label">px</span>
+                </div>
+                <div class="ctrlText ts-input is-labeled">
+                  <span textNowrap class="label">右框線</span>
+                  <input v-on:input="saveCookie" type="number" min="0" v-model="style.border.right">
+                  <span class="label">px</span>
+                </div>
+              </div>
+            </span>
+            <div class="ts-space"></div>
+            <div class="ts-center is-tertiary">
+              <div class="column is-8-wide">
+                <button class="ts-button" v-on:click="openModel">關閉</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="ts-notice is-outlined">
+        <div class="title">
+          <a target="_blank" href="https://twitter.com/LunAh_Eric">
+            @LunAh_Eric </a>
+        </div>
+        <div class="content cc-cont">
+          <div class="cc-year">
+            {{time.format('YYYY')}}
+          </div>
+          <div class="ts-image is-rounded ">
+            <img src="./img/Cc_by-nd_icon.svg" alt="cc">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/vue.min.js"></script>
+  <script src="./js/vue-cookies.js"></script>
+  <script src="./js/vue-toastr.umd.min.js"></script>
+  <script src="./js/clock.js"></script>
+  <script src="./js/colorPick.js"></script>
+</body>
+
+</html>
