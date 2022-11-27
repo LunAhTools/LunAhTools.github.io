@@ -5,6 +5,8 @@ const app = new Vue({
     timer: null,
     settingBtn: false,
     settingModal: [],
+    momentSwitch: false,
+    weekList: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
     rootStyle: {
       marginSwitch: false,
       marginSetting: 0,
@@ -37,8 +39,8 @@ const app = new Vue({
     userData: [],
   },
   created() {
-    this.momentSetting();
     this.getCookie();
+    this.momentSetting();
   },
   computed: {
     marginSetting() {
@@ -96,9 +98,26 @@ const app = new Vue({
   methods: {
     momentSetting() {
       moment.locale('zh-tw', {
-        weekdays: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六",],
-        weekdaysShort: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-      })
+        weekdaysShort: this.weekList
+      });
+    },
+    changeWeekdaysSetting() {
+      moment.updateLocale('zh-tw', {
+        weekdaysShort: this.weekList.split(',')
+      });
+      this.saveCookie();
+    },
+    checkWeekType() {
+      if (!this.momentSwitch) {
+        let _weekDefault = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+        moment.updateLocale('zh-tw', {
+          weekdaysShort: _weekDefault
+        });
+        this.weekList = _weekDefault;
+      } else {
+
+      }
+      this.saveCookie();
     },
     openModel() {
       if (!this.settingBtn) {
@@ -111,13 +130,13 @@ const app = new Vue({
     },
     getCookie() {
       this.timer = setInterval(() => {
-        this.time = moment()
+        this.time = moment();
       }, 500);
-      if (this.$cookies.get('userSetting').root && this.$cookies.get('userSetting').style) {
+      if (this.$cookies.get('userSetting') != null) {
         try {
           this.rootStyle = this.$cookies.get('userSetting').root;
           this.style = this.$cookies.get('userSetting').style;
-
+          this.momentSwitch = this.$cookies.get('userSetting').momentSwitch;
           console.log('yes');
         } catch (error) {
           console.error(error);
@@ -126,12 +145,14 @@ const app = new Vue({
       } else {
         console.log('no');
       }
+
     },
     saveCookie() {
       this.userData = {
         root: this.rootStyle,
-        style: this.style
-      }
+        style: this.style,
+        momentSwitch: this.momentSwitch,
+      };
       this.$cookies.set('userSetting', this.userData);
     },
     removeCookie() {

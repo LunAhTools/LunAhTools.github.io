@@ -38,7 +38,12 @@ span[textNowrap] {
 @font-face {
   font-display: auto;
   font-family: fontSetting;
-  src: url(../font/MedjedGlyph.otf) format("woff");
+  src: url(../font/font.otf) format("woff"),
+    url(../font/font.ttf) format("woff"),
+    url(../font/font.fnt) format("woff"),
+    url(../font/font.woff),
+    url(../font/font.woff2) format("woff"),
+    url(../font/MedjedGlyph.otf) format("woff");
 }
 
 #userCtrl {

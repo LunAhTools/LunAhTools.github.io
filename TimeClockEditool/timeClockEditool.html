@@ -45,15 +45,29 @@
             <div class="ts-space"></div>
             <div class="ts-divider"></div>
             <div class="ts-space"></div> -->
-            <label class="ts-switch">
-              <input type="checkbox" v-model="rootStyle.marginSwitch" />
-              <span>外距調整 (危險功能)</span>
-            </label>
+            <div class="settingSet">
+              <label class="ts-switch">
+                <input type="checkbox" v-on:change="saveCookie" v-model="rootStyle.marginSwitch" />
+                <span>外距調整 (危險功能)</span>
+              </label>
+            </div>
             <div class="settingSet" v-show="rootStyle.marginSwitch">
               <div class="ctrlText ts-input is-labeled">
                 <span textNowrap class="label">外部間距</span>
                 <input v-on:input="saveCookie" type="range" min="0" max="100" step="1"
                   v-model="rootStyle.marginSetting">
+              </div>
+            </div>
+            <div class="settingSet">
+              <label class="ts-switch">
+                <input type="checkbox" v-on:change="checkWeekType" v-model="momentSwitch" />
+                <span>星期樣式</span>
+              </label>
+            </div>
+            <div class="settingSet" v-show="momentSwitch">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">星期樣式</span>
+                <input v-on:input="changeWeekdaysSetting" type="text" v-model="weekList">
               </div>
             </div>
             <div class="settingSet">
@@ -63,7 +77,7 @@
               </div>
             </div>
             <label class="ts-switch">
-              <input type="checkbox" v-model="rootStyle.padSwitch" />
+              <input type="checkbox" v-on:change="saveCookie" v-model="rootStyle.padSwitch" />
               <span>內距切換</span>
             </label>
             <div class="settingSet" v-show="!rootStyle.padSwitch">
@@ -179,7 +193,7 @@
                 v-model="style.border.borderRadius">
             </div>
             <label class="ts-switch">
-              <input type="checkbox" v-model="style.borderSwitch" />
+              <input type="checkbox" v-on:change="saveCookie" v-model="style.borderSwitch" />
               <span>框線切換</span>
             </label>
             <div class="settingSet" v-show="!style.borderSwitch">
