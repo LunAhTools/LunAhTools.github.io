@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-hant">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./lib/bootstrap-5.2.3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./lib/bootstrap-icons-1.10.2/bootstrap-icons.css">
   <script src="./lib/moment.js"></script>
 
   <title>直播小工具 時鐘</title>
@@ -25,6 +25,21 @@
     .helpheight {
       height: 100em !important;
     }
+
+    span[customize]::before {
+      animation: updataIcon 1s linear infinite alternate;
+      margin-right: .2rem;
+    }
+
+    @keyframes updataIcon {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.5);
+      }
+    }
   </style>
 </head>
 
@@ -32,8 +47,7 @@
 
   <div id="app">
     <div id="load" :class="load" class="text-center fixed-top bg-white h-100">
-      <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status">
-      </div>
+      <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status"></div>
     </div>
     <div class="container mt-3 text-secondary">
 
@@ -47,19 +61,22 @@
               data-bs-target="#clockHelp">操作方式</button>
             <button type="button" class="btn btn-lg btn-warning" data-bs-toggle="modal"
               data-bs-target="#precautions">注意事項</button>
-            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal"
-              data-bs-target="#customization">客製選項</button>
+            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal" data-bs-target="#customization">
+              <span customize class="bi bi-arrow-up-circle text-light"></span>
+              <span>客製選項</span>
+            </button>
           </div>
         </div>
-
         <div class="col-12 col-lg-4 d-none d-lg-block align-self-center">
           <div class="text-lg-center h-100 ">
             <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="modal"
               data-bs-target="#clockHelp">操作方式</button>
             <button type="button" class="btn btn-lg btn-warning" data-bs-toggle="modal"
               data-bs-target="#precautions">注意事項</button>
-            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal"
-              data-bs-target="#customization">客製選項</button>
+            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal" data-bs-target="#customization">
+              <span customize class="bi bi-arrow-up-circle text-light"></span>
+              <span>客製選項</span>
+            </button>
           </div>
         </div>
       </div>
@@ -113,7 +130,6 @@
       </div>
 
       <div class="row mb-2">
-
         <div class="col-12 col-lg-6">
           <div class="card h-100">
             <div class="text-center ">
@@ -137,7 +153,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-12 col-lg-6">
           <div class="card h-100">
             <div class="text-center ">
@@ -161,7 +176,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- <div class="row mb-2">
@@ -221,7 +235,7 @@
           class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-md-down modal-fullscreen-lg-down">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="clockHelpLabel">操作說明</h5>
+              <h5 class="modal-title" id="clockHelpLabel">操作方式</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -234,7 +248,6 @@
           </div>
         </div>
       </div>
-
       <div class="modal fade" id="precautions" tabindex="-1" aria-labelledby="precautionsLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
           <div class="modal-content">
@@ -268,7 +281,6 @@
           </div>
         </div>
       </div>
-
       <div class="modal fade" id="customization" tabindex="-1" aria-labelledby="customizationLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
           <div class="modal-content">
@@ -280,18 +292,27 @@
               <div class="row">
                 <div class="col">
                   <ul>
-                    <dd>目前編輯器開發中，如果有需要客製化可以用Email或是twitter聯絡我</dd>
-                    <dd>可客製項目，亦可基於四種模板下去修改</dd>
+                    <dl>
+                      <dd>簡易編輯器開發完成，請至 <a class="text-decoration-none" href="./TimeClockEditool/timeClockEditool.html"
+                          target="_blank" alt="editool">簡易編輯器</a></dd>
+                      <dd>理論支援替換字體，但需要離線版，<br>
+                        用替換檔案來達成替換字體的需求。</dd>
+                      <dd><a class="text-decoration-none" href="https://youtu.be/tevBlPoWsj8" target="_blank"
+                          alt="editoolhelper">編輯器使用說明</a></dd>
+                      <dd>可客製項目，亦可基於四種模板下去修改</dd>
+                    </dl>
                     <li>各式顏色</li>
                     <li>邊框調整</li>
                     <li>字型替換 (需自備字型，建議使用開源並且可商用字型)</li>
                     <li>增加圖片</li>
                     <li>動畫調整</li>
-                    <dd class="mt-3">Twitter <a class="text-decoration-none"
-                        href="https://twitter.com/LunAh_Eric">@LunAh_Eric</a>
-                    </dd>
-                    <dd>Email <a class="text-decoration-none"
-                        href="mailto:luochen9913@gmail.com">luochen9913@gmail.com</a></dd>
+                    <dl>
+                      <dd class="mt-3">Twitter <a class="text-decoration-none"
+                          href="https://twitter.com/LunAh_Eric">@LunAh_Eric</a>
+                      </dd>
+                      <dd>Email <a class="text-decoration-none"
+                          href="mailto:luochen9913@gmail.com">luochen9913@gmail.com</a></dd>
+                    </dl>
                   </ul>
                 </div>
               </div>
@@ -345,25 +366,43 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
 
+  <script src="./lib/bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
   <script src="./lib/vue.min.js"></script>
+  <script src="./lib/vue-toastr.min.js"></script>
 
   <script>
     const app = new Vue({
       el: '#app',
       data: {
         load: [],
+        toastrMsg: '簡易編輯器更新囉 \<br> 詳情請點選客製選項 \<br> (2022/11/28)',
         time: moment(),
       },
       created() {
         setTimeout(() => {
           this.load = ['d-none']
+          this.addToastr('通知', this.toastrMsg, 'info');
         }, 900);
       },
+      methods: {
+        addToastr(title, msg, info) {
+          this.$toastr.Add({
+            // name: "myInfo",
+            title: title,
+            msg: msg,
+            clickClose: true,
+            timeout: 5500,
+            position: "toast-top-right",
+            type: info,
+            progressbar: false,
+            preventDuplicates: true,
+            style: { width: 'auto' },
+          });
+        }
+      }
     })
+
   </script>
 </body>
 
