@@ -1,0 +1,40 @@
+::-webkit-scrollbar {
+    width: 10px;
+    /* height: 10px; */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: lightgray;
+}
+
+.h-15em {
+    height: 15em !important;
+}
+
+.h-30em {
+    height: 30em !important;
+}
+
+.h-75em {
+    height: 75em !important;
+}
+
+.helpheight {
+    height: 100em !important;
+}
+
+span[customize]::before {
+    animation: updataIcon 1s linear infinite alternate;
+    margin-right: .2rem;
+}
+
+@keyframes updataIcon {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}

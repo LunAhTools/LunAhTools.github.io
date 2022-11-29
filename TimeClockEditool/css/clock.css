@@ -4,6 +4,16 @@
   --fSize: 3em;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  /* height: 10px; */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: lightgray;
+}
+
 html {
   background-color: transparent !important;
   line-height: normal;
