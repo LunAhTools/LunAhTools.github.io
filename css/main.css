@@ -27,6 +27,7 @@
 span[customize]::before {
     animation: updataIcon 1s linear infinite alternate;
     margin-right: .2rem;
+    color:darkred;
 }
 
 @keyframes updataIcon {

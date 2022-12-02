@@ -15,36 +15,43 @@
 <body>
 
   <div id="app">
-    <div id="load" :class="load" class="text-center fixed-top bg-white h-100">
+    <!-- <div id="load" :class="load" class="text-center fixed-top bg-white h-100">
       <div class="spinner-border m-5 text-secondary" style="width: 10rem; height: 10rem;" role="status"></div>
-    </div>
+    </div> -->
     <div class="container mt-3 text-secondary">
 
       <div class="row mb-4 justify-content-lg-center">
-        <div class="col-12 col-lg-4 text-center text-lg-end">
+        <div class="col-12 col-lg-6 text-center">
           <div class="fs-1 mb-3 mt-4">直播 時鐘樣式</div>
-          <!-- <span class="d-block">點選 Type文字 可開啟樣式</span> -->
+          <span class="d-block">點選 Type文字 可開啟樣式</span>
           <span class="d-block mb-3">內容、樣式、字型皆可客製</span>
           <div class=" w-100 text-center d-lg-none">
             <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="modal"
               data-bs-target="#clockHelp">操作方式</button>
             <button type="button" class="btn btn-lg btn-warning" data-bs-toggle="modal"
               data-bs-target="#precautions">注意事項</button>
-            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal" data-bs-target="#customization">
-              <span customize class="bi bi-arrow-up-circle text-light"></span>
-              <span>客製選項</span>
+            <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal"
+              data-bs-target="#customization">客製選項</button>
+            <button type="button" class="btn btn-lg btn-outline-secondary mt-2" data-bs-toggle="modal"
+              data-bs-target="#edittool">
+              <span customize class="bi bi-arrow-up-circle text-light" style="color:darkred"></span>
+              <span>自定義編輯器</span>
             </button>
           </div>
         </div>
-        <div class="col-12 col-lg-4 d-none d-lg-block align-self-center">
-          <div class="text-lg-center h-100 ">
+        <div class="col-12 col-lg-6 d-none d-lg-block align-self-center">
+          <div class="h-100 ">
             <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="modal"
               data-bs-target="#clockHelp">操作方式</button>
             <button type="button" class="btn btn-lg btn-warning" data-bs-toggle="modal"
               data-bs-target="#precautions">注意事項</button>
             <button type="button" class="btn btn-lg btn-info" data-bs-toggle="modal" data-bs-target="#customization">
-              <span customize class="bi bi-arrow-up-circle text-light"></span>
               <span>客製選項</span>
+            </button>
+            <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="modal"
+              data-bs-target="#edittool">
+              <span customize class="bi bi-arrow-up-circle text-light"></span>
+              <span>自定義編輯器</span>
             </button>
           </div>
         </div>
@@ -262,12 +269,6 @@
                 <div class="col">
                   <ul>
                     <dl>
-                      <dd>簡易編輯器開發完成，請至 <a class="text-decoration-none" href="./TimeClockEditool/timeClockEditool.html"
-                          target="_blank" alt="editool">簡易編輯器</a></dd>
-                      <dd>理論支援替換字體，但需要離線版，<br>
-                        用替換檔案來達成替換字體的需求。</dd>
-                      <dd><a class="text-decoration-none" href="https://youtu.be/tevBlPoWsj8" target="_blank"
-                          alt="editoolhelper">編輯器使用說明</a></dd>
                       <dd>可客製項目，亦可基於四種模板下去修改</dd>
                     </dl>
                     <li>各式顏色</li>
@@ -281,6 +282,39 @@
                       </dd>
                       <dd>Email <a class="text-decoration-none"
                           href="mailto:luochen9913@gmail.com">luochen9913@gmail.com</a></dd>
+                    </dl>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="edittool" tabindex="-1" aria-labelledby="edittoolLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="customizationLabel">客製選項</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <ul>
+                    <dl>
+                      <dd class="d-flex align-items-center" style="flex-wrap: wrap;">
+                        簡易編輯器開發完成，請至<a class="text-decoration-none fs-3 ms-1"
+                          href="./TimeClockEditool/timeClockEditool.html" target="_blank" alt="editool">簡易編輯器</a></dd>
+                      <dd>理論支援替換字體，但需要離線版，<br>
+                        用替換檔案來達成替換字體的需求。</dd>
+                      <dd class="d-flex align-items-center">
+                        <span class="fs-4"> 使用說明→ </span>
+                        <a class="text-decoration-none fs-3" href="https://youtu.be/tevBlPoWsj8" target="_blank"
+                          alt="editoolhelper">編輯器使用說明</a>
+                      </dd>
                     </dl>
                   </ul>
                 </div>
