@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/tocas.min.css">
   <link rel="stylesheet" href="./css/clock.css">
   <link rel="stylesheet" href="./css/coloris.min.css">
+  <link id="fontLink" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata">
   <script src="./js/moment.js"></script>
   <script src="./js/coloris.min.js"></script>
   <title>時鐘</title>
@@ -16,7 +17,7 @@
 </head>
 
 <body>
-  <div id="app" :style="marginSetting">
+  <div id="app" :style="marginSetting" @keyup.escape="closeModel">
 
     <div id="clock" :style="clockStyle">
       <span :style="fontStyle">
@@ -27,14 +28,15 @@
       <div borderSetting :style="borderStyle"></div>
       <div bgSetting :style="bgStyle"></div>
     </div>
-    <div id="userCtrl">
-      <button class="ts-button" v-on:click="openModel">設定</button>
+    <div id="userCtrl" v-on:keyup.escape="closeModel">
+      <button class="ts-button" v-on:click="openModel">樣式設定</button>
+      <button class="ts-button" v-on:click="openFontModel">字體設定</button>
       <button class="ts-button" v-on:click="removeCookie">清除存檔</button>
-      <div class="ts-modal" :class="settingModal">
+      <div class="ts-modal" :class="settingModal" >
         <div class="content">
           <div class="ts-content">
             <div class="ts-content is-dense">
-              <div class="ts-header">設定</div>
+              <div class="ts-header">樣式設定</div>
             </div>
             <div class="ts-divider"></div>
             <div class="ts-space"></div>
@@ -238,8 +240,32 @@
           </div>
         </div>
       </div>
+      <div class="ts-modal" :class="fontModel" >
+        <div class="content">
+          <div class="ts-content">
+            <div class="ts-content is-dense">
+              <div class="ts-header">字體設定</div>
+            </div>
+            <div class="ts-divider"></div>
+            <div class="ts-space"></div>
+            <label class="ts-switch">
+              <input type="checkbox" v-on:change="saveCookie" v-model="fontStyle.fontSwitch" />
+              <span>開啟自訂字體</span>
+            </label>
+            <div class="settingSet" v-show="fontStyle.fontSwitch">
+              <input type="text" placeholder="輸入任意文字後按下 enter 鍵" v-model="fontInput" v-on:keyup.enter="changeFont">
+            </div>
+            <div class="ts-space"></div>
+            <div class="ts-center is-tertiary">
+              <div class="column is-8-wide">
+                <button class="ts-button" v-on:click="openFontModel">關閉</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="cc">
+    <!-- <div class="cc">
       <div class="ts-notice is-outlined">
         <div class="title">
           <a target="_blank" href="https://twitter.com/LunAh_Eric" style="vertical-align:middle;"> {{time.format('YYYY')}} @LunAh_Eric </a>
@@ -250,10 +276,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
-  <script src="./js/vue.min.js"></script>
+  <script src="./js/vue.js"></script>
   <script src="./js/vue-cookies.js"></script>
   <script src="./js/vue-toastr.umd.min.js"></script>
   <script src="./js/clock.js"></script>

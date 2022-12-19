@@ -3,6 +3,14 @@ const app = new Vue({
   data: {
     time: moment(),
     timer: null,
+    fontApiUrl: '',
+    fontStyle: {
+      fontSwitch: false,
+      fontList: [],
+    },
+    fontInput: 'https://fonts.googleapis.com/css2?',
+    fontsettingBtn: false,
+    fontModel: [],
     settingBtn: false,
     settingModal: [],
     momentSwitch: false,
@@ -41,6 +49,7 @@ const app = new Vue({
   created() {
     this.getCookie();
     this.momentSetting();
+    let fontLink = document.querySelector('#fontLink');
   },
   computed: {
     marginSetting() {
@@ -68,11 +77,11 @@ const app = new Vue({
       }
 
     },
-    fontStyle() {
-      return {
-        'Opacity': this.style.fontOpacity,
-      }
-    },
+    // fontStyle() {
+    //   return {
+    //     'Opacity': this.style.fontOpacity,
+    //   }
+    // },
     borderStyle() {
       if (this.style.borderSwitch) {
         return {
@@ -114,18 +123,25 @@ const app = new Vue({
           weekdaysShort: _weekDefault
         });
         this.weekList = _weekDefault;
-      } else {
-
       }
       this.saveCookie();
     },
     openModel() {
       if (!this.settingBtn) {
-        this.settingModal = ['is-visible']
-        this.settingBtn = true
+        this.settingModal = ['is-visible'];
+        this.settingBtn = true;
       } else {
-        this.settingModal = ['']
-        this.settingBtn = false
+        this.settingModal = [''];
+        this.settingBtn = false;
+      }
+    },
+    openFontModel() {
+      if (!this.fontsettingBtn) {
+        this.fontModel = ['is-visible'];
+        this.fontsettingBtn = true;
+      } else {
+        this.fontModel = [''];
+        this.fontsettingBtn = false;
       }
     },
     getCookie() {
@@ -168,6 +184,25 @@ const app = new Vue({
       setTimeout(() => {
         location.reload();
       }, 1000);
+    },
+    fontDefault() {
+      fontLink.href = 'fontSetting';
+    },
+    changeFont() {
+      // clock.style.fontFamily
+      // let fontLink = document.querySelector('#fontLink');
+      // let url = 'https://fonts.googleapis.com/css2?family=Crimson Pro&family=Literata';
+      console.log(this.fontInput);
+    },
+    closeModel() {
+      if (this.settingBtn) {
+        this.settingModal = [''];
+        this.settingBtn = false;
+      }
+      if (this.fontsettingBtn) {
+        this.fontModel = [''];
+        this.fontsettingBtn = false;
+      }
     },
     saveFile() {
       var filename = 'userStyleSetting.save'
