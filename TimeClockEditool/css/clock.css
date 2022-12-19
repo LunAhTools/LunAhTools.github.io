@@ -5,8 +5,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  /* height: 10px; */
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -161,4 +160,24 @@ input[type="range"] {
 
 .cc-cont>div:nth-child(1) {
   margin-right: .5rem;
+}
+
+.modelTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeIcon::after {
+  content: 'X';
+  transition: .2s;
+}
+
+.closeIcon:hover {
+  transform: scale(1.2);
+  transition: .2s;
+}
+
+.ts-notice.is-outlined {
+  border-color: transparent;
 }

@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="./css/tocas.min.css">
   <link rel="stylesheet" href="./css/clock.css">
   <link rel="stylesheet" href="./css/coloris.min.css">
-  <link id="fontLink" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link id="fontLink" rel="stylesheet" href="">
   <script src="./js/moment.js"></script>
   <script src="./js/coloris.min.js"></script>
   <title>時鐘</title>
@@ -17,7 +19,7 @@
 </head>
 
 <body>
-  <div id="app" :style="marginSetting" @keyup.escape="closeModel">
+  <div id="app" :style="marginSetting" v-on:keyup.escape="closeModel">
 
     <div id="clock" :style="clockStyle">
       <span :style="fontStyle">
@@ -28,15 +30,16 @@
       <div borderSetting :style="borderStyle"></div>
       <div bgSetting :style="bgStyle"></div>
     </div>
-    <div id="userCtrl" v-on:keyup.escape="closeModel">
+    <div id="userCtrl">
       <button class="ts-button" v-on:click="openModel">樣式設定</button>
-      <button class="ts-button" v-on:click="openFontModel">字體設定</button>
+      <button class="ts-button" v-on:click="openFontModel">字型設定</button>
       <button class="ts-button" v-on:click="removeCookie">清除存檔</button>
-      <div class="ts-modal" :class="settingModal" >
+      <div class="ts-modal" :class="settingModal">
         <div class="content">
           <div class="ts-content">
-            <div class="ts-content is-dense">
+            <div class="ts-content is-dense modelTitle">
               <div class="ts-header">樣式設定</div>
+              <div class="ts-header closeIcon" v-on:click="openModel"></div>
             </div>
             <div class="ts-divider"></div>
             <div class="ts-space"></div>
@@ -240,20 +243,65 @@
           </div>
         </div>
       </div>
-      <div class="ts-modal" :class="fontModel" >
+      <div class="ts-modal" :class="fontModel">
         <div class="content">
           <div class="ts-content">
-            <div class="ts-content is-dense">
-              <div class="ts-header">字體設定</div>
+            <div class="ts-content is-dense modelTitle">
+              <div class="ts-header">字型設定</div>
+              <div class="ts-header closeIcon" v-on:click="openFontModel"></div>
             </div>
             <div class="ts-divider"></div>
             <div class="ts-space"></div>
-            <label class="ts-switch">
-              <input type="checkbox" v-on:change="saveCookie" v-model="fontStyle.fontSwitch" />
-              <span>開啟自訂字體</span>
-            </label>
-            <div class="settingSet" v-show="fontStyle.fontSwitch">
-              <input type="text" placeholder="輸入任意文字後按下 enter 鍵" v-model="fontInput" v-on:keyup.enter="changeFont">
+            <div class="settingSet">
+              <label class="ts-switch">
+                <input type="checkbox" v-on:change="fontDefault" v-model="fontSetting.fontSwitch" />
+                <span>開啟自訂字型 (關閉返回預設值)</span>
+            </div>
+            <div class="settingSet" v-show="fontSetting.fontSwitch">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">字型網址</span>
+                <input type="text" placeholder="輸入字型網址" v-model="fontInputUrl" v-on:keyup.enter="changeFont">
+              </div>
+            </div>
+            <div class="settingSet" v-show="fontSetting.fontSwitch">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">字型樣式</span>
+                <input type="text" placeholder="輸入字型樣式" v-model="fontInputFamily" v-on:keyup.enter="changeFont">
+              </div>
+            </div>
+            <div class="settingSet" v-show="fontSetting.fontSwitch">
+              <div class="ctrlText ts-input is-labeled">
+                <span textNowrap class="label">目前使用字型樣式</span>
+                <input type="text" v-model="fontSetting.fontFamily" disabled>
+              </div>
+            </div>
+            <div class="settingSet" v-show="fontSetting.fontSwitch">
+              <div class="ctrlText is-labeled">
+                <div>設定使用教學</div>
+                <div>範例:Noto Serif Traditional Chinese</div>
+                <div class="ts-list is-unordered">
+                  <div class="item">前往 <a href="https://fonts.google.com" target="_blank"
+                      rel="noopener noreferrer">Google Fonts</a> 挑選喜歡的字型</div>
+                  <div class="ts-image">
+                    <img src="./img/step0.png" alt="挑選字型" title="挑選字型">
+                  </div>
+                  <div class="item">複製圖中選取的網址</div>
+                  <div class="ts-image">
+                    <img src="./img/step1.png" alt="複製選取的網址" title="複製選取的網址">
+                  </div>
+                  <div class="item">將網址貼入 字型網址 的空格</div>
+                  <div class="item">複製途中選取的字型樣式</div>
+                  <div class="ts-image">
+                    <img src="./img/step2.png" alt="複製選取的樣式" title="複製選取的樣式">
+                  </div>
+                  <div class="item">將樣式貼入 字型樣式 的空格</div>
+                  <div class="item">按下 Enter 可以直接套用</div>
+                  <div class="item">如果找不到選擇的字型，可以在右上角開啟</div>
+                  <div class="ts-image">
+                    <img src="./img/step3.png" alt="選擇的字型" title="選擇的字型">
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="ts-space"></div>
             <div class="ts-center is-tertiary">
@@ -265,7 +313,7 @@
         </div>
       </div>
     </div>
-    <!-- <div class="cc">
+    <div class="cc">
       <div class="ts-notice is-outlined">
         <div class="title">
           <a target="_blank" href="https://twitter.com/LunAh_Eric" style="vertical-align:middle;"> {{time.format('YYYY')}} @LunAh_Eric </a>
@@ -276,7 +324,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 
   <script src="./js/vue.js"></script>

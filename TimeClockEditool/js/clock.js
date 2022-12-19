@@ -3,18 +3,25 @@ const app = new Vue({
   data: {
     time: moment(),
     timer: null,
-    fontApiUrl: '',
-    fontStyle: {
-      fontSwitch: false,
-      fontList: [],
-    },
-    fontInput: 'https://fonts.googleapis.com/css2?',
-    fontsettingBtn: false,
-    fontModel: [],
     settingBtn: false,
     settingModal: [],
     momentSwitch: false,
     weekList: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+    fontInputUrl: '',
+    fontInputFamily: '',
+    fontsettingBtn: false,
+    fontModel: [],
+    fontApiUrl: 'https://fonts.googleapis.com/css2?family=',
+    fontSettingDefault: {
+      fontSwitch: false,
+      fontUrl: '',
+      fontFamily: '',
+    },
+    fontSetting: {
+      fontSwitch: false,
+      fontUrl: '',
+      fontFamily: '',
+    },
     rootStyle: {
       marginSwitch: false,
       marginSetting: 0,
@@ -49,7 +56,6 @@ const app = new Vue({
   created() {
     this.getCookie();
     this.momentSetting();
-    let fontLink = document.querySelector('#fontLink');
   },
   computed: {
     marginSetting() {
@@ -77,11 +83,11 @@ const app = new Vue({
       }
 
     },
-    // fontStyle() {
-    //   return {
-    //     'Opacity': this.style.fontOpacity,
-    //   }
-    // },
+    fontStyle() {
+      return {
+        'Opacity': this.style.fontOpacity,
+      }
+    },
     borderStyle() {
       if (this.style.borderSwitch) {
         return {
@@ -150,9 +156,11 @@ const app = new Vue({
       }, 500);
       if (this.$cookies.get('userSetting') != null) {
         try {
-          this.rootStyle = this.$cookies.get('userSetting').root;
-          this.style = this.$cookies.get('userSetting').style;
-          this.momentSwitch = this.$cookies.get('userSetting').momentSwitch;
+          let _cookies = this.$cookies.get('userSetting');
+          this.rootStyle = _cookies.root;
+          this.style = _cookies.style;
+          this.momentSwitch = _cookies.momentSwitch ? _cookies.momentSwitch : null;
+          this.fontSetting = _cookies.fontSetting ? _cookies.fontSetting : this.fontSettingDefault;
           console.log('yes');
         } catch (error) {
           console.error(error);
@@ -161,13 +169,14 @@ const app = new Vue({
       } else {
         console.log('no');
       }
-
     },
     saveCookie() {
       this.userData = {
         root: this.rootStyle,
         style: this.style,
         momentSwitch: this.momentSwitch,
+        fontSwitch: this.fontSwitch,
+        fontSetting: this.fontSetting,
       };
       this.$cookies.set('userSetting', this.userData);
     },
@@ -186,13 +195,31 @@ const app = new Vue({
       }, 1000);
     },
     fontDefault() {
-      fontLink.href = 'fontSetting';
+      if (!this.fontSwitch) {
+        clock.style.fontFamily = 'fontSetting';
+        this.saveCookie();
+      }
     },
     changeFont() {
-      // clock.style.fontFamily
-      // let fontLink = document.querySelector('#fontLink');
-      // let url = 'https://fonts.googleapis.com/css2?family=Crimson Pro&family=Literata';
-      console.log(this.fontInput);
+      if (this.fontInputUrl == '' || this.fontInputFamily == '') {
+        this.$toastr.e({
+          msg: "字型設定為空",
+          clickClose: false,
+          timeout: 1000,
+          position: "toast-top-left",
+          progressbar: false,
+          preventDuplicates: true,
+        });
+      } else {
+        let fontLink = document.querySelector('#fontLink');
+        this.fontUrl = this.fontApiUrl + this.fontInputUrl;
+        this.fontSetting.fontFamily = this.fontInputFamily;
+        fontLink.href = this.fontUrl;
+        clock.style.fontFamily = this.fontInputFamily;
+        this.fontInputUrl = '';
+        this.fontInputFamily = '';
+        this.saveCookie();
+      }
     },
     closeModel() {
       if (this.settingBtn) {
